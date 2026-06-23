@@ -1,0 +1,1 @@
+import{u}from"./YAHLC3Ac.js";import"./Dst0_fab.js";const d=()=>{const e=u("vendor_user_data",{default:()=>null}),o=u("vendor_data",{default:()=>null});return{user:e,vendor:o,logOut:()=>{e.value=null,o.value=null,window.location.href="/auth/login"},setUser:t=>{e.value=t},setVendor:t=>{o.value=t}}};export{d as u};

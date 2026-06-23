@@ -1,0 +1,52 @@
+import type { Config } from 'tailwindcss'
+
+export default <Config>{
+  content: [
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './composables/**/*.{js,ts}',
+    './plugins/**/*.{js,ts}',
+    './app.vue',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7c3aed',
+          800: '#6B21A8',
+          900: '#581c87',
+          950: '#3b0764',
+        },
+        accent: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#D97706',
+          700: '#b45309',
+        },
+        success: { 500: '#10b981', 600: '#059669', 700: '#047857' },
+        danger: { 500: '#ef4444', 600: '#DC2626', 700: '#b91c1c' },
+        warning: { 500: '#f59e0b', 600: '#d97706', 700: '#b45309' },
+      },
+      fontFamily: {
+        heading: ['Plus Jakarta Sans', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        'card': '0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04)',
+      },
+    },
+  },
+  plugins: [],
+}

@@ -1,0 +1,54 @@
+import { _ as __nuxt_component_0 } from "./nuxt-link-5mHAFJnX.js";
+import { mergeProps, withCtx, createVNode, createTextVNode, useSSRContext } from "vue";
+import { ssrRenderAttrs, ssrRenderComponent, ssrRenderSlot } from "vue/server-renderer";
+import { _ as _export_sfc } from "../server.mjs";
+import "/Users/marquis/curatewithng/vendor/node_modules/ufo/dist/index.mjs";
+import "/Users/marquis/curatewithng/vendor/node_modules/defu/dist/defu.mjs";
+import "/Users/marquis/curatewithng/vendor/node_modules/ofetch/dist/node.mjs";
+import "#internal/nuxt/paths";
+import "/Users/marquis/curatewithng/vendor/node_modules/hookable/dist/index.mjs";
+import "/Users/marquis/curatewithng/vendor/node_modules/unctx/dist/index.mjs";
+import "/Users/marquis/curatewithng/vendor/node_modules/h3/dist/index.mjs";
+import "vue-router";
+import "/Users/marquis/curatewithng/vendor/node_modules/klona/dist/index.mjs";
+const _sfc_main = {};
+function _sfc_ssrRender(_ctx, _push, _parent, _attrs) {
+  const _component_NuxtLink = __nuxt_component_0;
+  _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-slate-50 flex items-center justify-center p-4" }, _attrs))}><div class="w-full max-w-md">`);
+  _push(ssrRenderComponent(_component_NuxtLink, {
+    to: "/",
+    class: "flex items-center justify-center gap-2 mb-8"
+  }, {
+    default: withCtx((_, _push2, _parent2, _scopeId) => {
+      if (_push2) {
+        _push2(`<div class="w-10 h-10 bg-gradient-brand rounded-xl flex items-center justify-center bg-primary-800"${_scopeId}><span class="text-white font-heading font-bold text-lg"${_scopeId}>C</span></div><span class="font-heading font-bold text-2xl text-slate-900"${_scopeId}>Curate<span class="text-accent-500"${_scopeId}>With</span>NG <span class="text-primary-800 text-sm ml-1 px-2 py-0.5 bg-primary-50 rounded-full inline-block align-middle"${_scopeId}>Vendor</span></span>`);
+      } else {
+        return [
+          createVNode("div", { class: "w-10 h-10 bg-gradient-brand rounded-xl flex items-center justify-center bg-primary-800" }, [
+            createVNode("span", { class: "text-white font-heading font-bold text-lg" }, "C")
+          ]),
+          createVNode("span", { class: "font-heading font-bold text-2xl text-slate-900" }, [
+            createTextVNode("Curate"),
+            createVNode("span", { class: "text-accent-500" }, "With"),
+            createTextVNode("NG "),
+            createVNode("span", { class: "text-primary-800 text-sm ml-1 px-2 py-0.5 bg-primary-50 rounded-full inline-block align-middle" }, "Vendor")
+          ])
+        ];
+      }
+    }),
+    _: 1
+  }, _parent));
+  ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+  _push(`</div></div>`);
+}
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("layouts/auth.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+const auth = /* @__PURE__ */ _export_sfc(_sfc_main, [["ssrRender", _sfc_ssrRender]]);
+export {
+  auth as default
+};
+//# sourceMappingURL=auth-DZsf_-rY.js.map

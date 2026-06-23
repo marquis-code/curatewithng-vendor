@@ -1,0 +1,53 @@
+<template>
+  <div>
+    <div class="flex justify-between items-center mb-8">
+      <div>
+        <h1 class="text-3xl font-heading font-bold text-slate-900 mb-1">Orders</h1>
+        <p class="text-slate-500">Manage your customer orders</p>
+      </div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <!-- Toolbar -->
+      <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+        <input type="text" placeholder="Search orders..." class="input-field !py-2 max-w-sm" />
+        <select class="input-field !py-2 !w-auto">
+          <option value="">All Status</option>
+          <option value="PENDING">Pending</option>
+          <option value="PROCESSING">Processing</option>
+          <option value="SHIPPED">Shipped</option>
+          <option value="DELIVERED">Delivered</option>
+        </select>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-white border-b border-slate-200 text-sm font-semibold text-slate-600">
+              <th class="p-4">Order ID</th>
+              <th class="p-4">Date</th>
+              <th class="p-4">Customer</th>
+              <th class="p-4">Amount</th>
+              <th class="p-4">Status</th>
+              <th class="p-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-100 bg-white">
+              <td colspan="6" class="p-12 text-center text-slate-500">
+                <div class="text-4xl mb-3">📦</div>
+                <p>No orders found matching your criteria</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+definePageMeta({ middleware: 'auth' });
+useHead({ title: 'Orders — Vendor Portal' });
+</script>
