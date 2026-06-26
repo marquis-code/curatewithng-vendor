@@ -19,6 +19,18 @@ import { NuxtModule, ModuleDependencyMeta } from '@nuxt/schema'
    apiBase: string,
 
    cloudinaryCloudName: string,
+
+   firebaseApiKey: string,
+
+   firebaseAuthDomain: string,
+
+   firebaseProjectId: string,
+
+   firebaseStorageBucket: string,
+
+   firebaseMessagingSenderId: string,
+
+   firebaseAppId: string,
   }
 declare module '@nuxt/schema' {
   interface ModuleDependencies {

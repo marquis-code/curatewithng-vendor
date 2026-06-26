@@ -45,7 +45,9 @@ instanceArray.forEach((instance) => {
       return response;
     },
     (err: any) => {
-      let showToast = (opts: any) => {};
+      let showToast = (opts: any) => {
+        if (import.meta.client) console.error(opts.message || "An error occurred");
+      };
       let logOut = () => {
         if (import.meta.client) {
           document.cookie = "vendor_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -55,7 +57,16 @@ instanceArray.forEach((instance) => {
 
       try {
         const customToast = useCustomToast();
-        showToast = customToast.showToast;
+        showToast = (opts: any) => {
+          try {
+            customToast.showToast(opts);
+          } catch (e) {
+            if (import.meta.client) console.error(opts.message || "An error occurred");
+          }
+        };
+      } catch (e) {}
+
+      try {
         const user = useUser();
         logOut = user.logOut;
       } catch (e) {}

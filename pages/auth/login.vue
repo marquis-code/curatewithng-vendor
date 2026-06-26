@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-[2rem] border border-slate-100 p-8 md:p-10 animate-scale-in max-w-md mx-auto shadow-sm">
+  <div class="w-full animate-scale-in">
     <h2 class="text-2xl font-heading font-bold text-slate-900 text-center mb-2">Welcome Back</h2>
     <p class="text-slate-500 text-center mb-8">Sign in to your CurateWithNG Vendor account</p>
 
@@ -46,12 +46,18 @@
 import { Loader2 } from 'lucide-vue-next';
 import { ref } from 'vue';
 
-definePageMeta({ layout: 'auth' });
+definePageMeta({ 
+  layout: 'auth',
+  authImageTextTitle: 'Welcome Back.',
+  authImageTextBody: 'Manage your storefront and reach thousands of gift-seekers.'
+});
 useHead({ title: 'Vendor Sign In — CurateWithNG' });
 
 import { useAuth } from '~/composables/modules/auth/useAuth';
+import { useCustomToast } from '~/composables/core/useCustomToast';
 
 const { login, firebaseGoogleLogin } = useAuth();
+const { showToast } = useCustomToast();
 const email = ref('');
 const password = ref('');
 const loading = ref(false);
@@ -65,7 +71,7 @@ const handleLogin = async () => {
     navigateTo('/dashboard');
   } catch (e: any) {
     error.value = e.data?.message || e.message || 'Invalid email or password';
-    alert(error.value);
+    showToast({ title: 'Error', message: error.value, toastType: 'error' });
   } finally {
     loading.value = false;
   }
@@ -86,7 +92,7 @@ const handleGoogleLogin = async () => {
     navigateTo('/dashboard');
   } catch (e: any) {
     error.value = e.data?.message || e.message || 'Google Login failed';
-    alert(error.value);
+    showToast({ title: 'Error', message: error.value, toastType: 'error' });
   } finally {
     loading.value = false;
   }

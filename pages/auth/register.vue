@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-[2rem] border border-slate-100 p-8 md:p-10 animate-scale-in max-w-md mx-auto shadow-sm">
+  <div class="w-full animate-scale-in">
     <h2 class="text-2xl font-heading font-bold text-slate-900 text-center mb-2">Create Vendor Account</h2>
     <p class="text-slate-500 text-center mb-8">Join CurateWithNG and start selling to thousands of shoppers</p>
 
@@ -57,12 +57,18 @@
 import { Loader2 } from 'lucide-vue-next';
 import { reactive, ref } from 'vue';
 
-definePageMeta({ layout: 'auth' });
+definePageMeta({ 
+  layout: 'auth',
+  authImageTextTitle: 'Join CurateWithNG.',
+  authImageTextBody: 'Turn your premium crafts into a thriving business on our platform.'
+});
 useHead({ title: 'Create Vendor Account — CurateWithNG' });
 
 import { useAuth } from '~/composables/modules/auth/useAuth';
+import { useCustomToast } from '~/composables/core/useCustomToast';
 
 const { register, firebaseGoogleLogin } = useAuth();
+const { showToast } = useCustomToast();
 const loading = ref(false);
 
 const form = reactive({
@@ -80,7 +86,7 @@ const handleRegister = async () => {
     await register(form);
     navigateTo('/dashboard');
   } catch (e: any) {
-    alert(e.data?.message || e.message || 'Registration failed. Please try again.');
+    showToast({ title: 'Error', message: e.data?.message || e.message || 'Registration failed. Please try again.', toastType: 'error' });
   } finally {
     loading.value = false;
   }
@@ -99,7 +105,7 @@ const handleGoogleLogin = async () => {
     await firebaseGoogleLogin({ token: idToken });
     navigateTo('/dashboard');
   } catch (e: any) {
-    alert(e.data?.message || e.message || 'Google Login failed');
+    showToast({ title: 'Error', message: e.data?.message || e.message || 'Google Login failed', toastType: 'error' });
   } finally {
     loading.value = false;
   }

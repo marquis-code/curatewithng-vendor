@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-[2rem] border border-slate-100 p-8 md:p-10 animate-scale-in max-w-md mx-auto shadow-sm">
+  <div class="w-full animate-scale-in">
     <h2 class="text-2xl font-heading font-bold text-slate-900 text-center mb-2">Reset Password</h2>
     <p class="text-slate-500 text-center mb-8">Enter your vendor email to receive a password reset link.</p>
 
@@ -24,22 +24,28 @@
 <script setup lang="ts">
 import { Loader2 } from 'lucide-vue-next';
 import { ref } from 'vue';
+import { useCustomToast } from '~/composables/core/useCustomToast';
 
-definePageMeta({ layout: 'auth' });
+definePageMeta({ 
+  layout: 'auth',
+  authImageTextTitle: 'Lost Access?',
+  authImageTextBody: 'Let\'s get your storefront secured and back online.'
+});
 useHead({ title: 'Forgot Password — CurateWithNG Vendor' });
 
 const email = ref('');
 const loading = ref(false);
+const { showToast } = useCustomToast();
 
 const handleReset = async () => {
   loading.value = true;
   try {
     // Basic mock logic or integrate with firebase auth
     await new Promise(resolve => setTimeout(resolve, 1000));
-    alert('Password reset link sent to ' + email.value);
+    showToast({ title: 'Success', message: 'Password reset link sent to ' + email.value, toastType: 'success' });
     navigateTo('/auth/login');
   } catch (e: any) {
-    alert(e.message || 'Failed to send reset link');
+    showToast({ title: 'Error', message: e.message || 'Failed to send reset link', toastType: 'error' });
   } finally {
     loading.value = false;
   }

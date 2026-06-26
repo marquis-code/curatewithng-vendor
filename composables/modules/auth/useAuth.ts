@@ -9,7 +9,7 @@ export const useAuth = () => {
     const response = await auth_api.getProfile();
     setUser(response.data);
     
-    if (response.data.roles && response.data.roles.includes('VENDOR')) {
+    if (response.data?.role === 'VENDOR') {
       const vendorResponse = await vendors_api.getVendorProfile();
       setVendor(vendorResponse.data);
     }
@@ -19,7 +19,7 @@ export const useAuth = () => {
   const login = async (payload: any) => {
     const response = await auth_api.login(payload);
     
-    if (!response.data.user.roles || !response.data.user.roles.includes('VENDOR')) {
+    if (!response.data?.user?.role || response.data.user.role !== 'VENDOR') {
       throw { response: { data: { message: 'Unauthorized. Vendor access required.' } }, data: { message: 'Unauthorized. Vendor access required.' }, message: 'Unauthorized. Vendor access required.' };
     }
 
@@ -32,7 +32,7 @@ export const useAuth = () => {
   const register = async (payload: any) => {
     const response = await auth_api.register(payload);
     
-    if (!response.data.user.roles || !response.data.user.roles.includes('VENDOR')) {
+    if (!response.data?.user?.role || response.data.user.role !== 'VENDOR') {
       throw { data: { message: 'Failed to create vendor account.' }, message: 'Failed to create vendor account.' };
     }
 
@@ -44,7 +44,7 @@ export const useAuth = () => {
   const firebaseGoogleLogin = async (payload: { token: string }) => {
     const response = await auth_api.firebaseGoogleLogin(payload);
     
-    if (!response.data.user.roles || !response.data.user.roles.includes('VENDOR')) {
+    if (!response.data?.user?.role || response.data.user.role !== 'VENDOR') {
       throw { data: { message: 'Unauthorized. Vendor access required. This Google account is not a vendor.' }, message: 'Unauthorized. This Google account is not registered as a vendor.' };
     }
 
