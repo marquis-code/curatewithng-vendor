@@ -98,3 +98,19 @@ const handleGoogleLogin = async () => {
   }
 };
 </script>
+
+<style scoped>
+.input-field {
+  @apply w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-900/20 focus:border-primary-900 transition-all shadow-sm;
+}
+.btn-primary {
+  @apply bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition-all;
+}
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+</style>
